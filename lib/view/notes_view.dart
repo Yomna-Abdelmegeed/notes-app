@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/view/widgets/custom_app_bar.dart';
-import 'package:notes_app/view/widgets/custom_bottom.dart';
-import 'package:notes_app/view/widgets/custom_text_field.dart';
+import 'package:notes_app/view/widgets/custom_bottom_sheet.dart';
 import 'package:notes_app/view/widgets/notes_list_view.dart';
 
 class NotesView extends StatelessWidget {
@@ -35,28 +34,6 @@ class NotesView extends StatelessWidget {
           ),
           SizedBox(height: 24),
           Expanded(child: NotesListView()),
-        ],
-      ),
-    );
-  }
-}
-
-class CustomBottomSheet extends StatelessWidget {
-  const CustomBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      child: Column(
-        children: [
-          CustomTextField(hintText: 'Title'),
-          SizedBox(height: 24),
-          CustomTextField(
-            hintText: 'Content',
-            maxLines: 5,
-          ),
-          CustomBottom(),
         ],
       ),
     );
