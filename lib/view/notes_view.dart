@@ -9,7 +9,14 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Container();
+            },
+          );
+        },
         backgroundColor: Color(0xFF89CFF0),
         shape: CircleBorder(),
         child: Icon(
