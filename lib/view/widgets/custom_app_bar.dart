@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -21,9 +21,7 @@ class CustomAppBar extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(
-                alpha: 0.4,
-              ),
+              color: Colors.white.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
