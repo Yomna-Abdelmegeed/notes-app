@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/view/widgets/custom_app_bar.dart';
 import 'package:notes_app/view/widgets/custom_bottom_sheet.dart';
-import 'package:notes_app/view/widgets/notes_list_view.dart';
+import 'package:notes_app/view/widgets/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
@@ -13,8 +12,14 @@ class NotesView extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
+            isScrollControlled: true, //! allows bottom sheet to resize with keyboard
             builder: (context) {
-              return CustomBottomSheet();
+              return Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom), 
+                    //! pushes up when keyboard shows
+                child: CustomBottomSheet(),
+              );
             },
           );
         },
@@ -25,20 +30,7 @@ class NotesView extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            CustomAppBar(
-              title: 'Notes',
-              icon: Icons.search,
-            ),
-            SizedBox(height: 24),
-            Expanded(child: NotesListView()),
-          ],
-        ),
-      ),
+      body: NotesViewBody(),
     );
   }
 }
