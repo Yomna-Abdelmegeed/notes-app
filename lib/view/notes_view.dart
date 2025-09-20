@@ -25,16 +25,19 @@ class NotesView extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 50),
-          CustomAppBar(
-            title: 'Notes',
-            icon: Icons.search,
-          ),
-          SizedBox(height: 24),
-          Expanded(child: NotesListView()),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          children: [
+            SizedBox(height: 50),
+            CustomAppBar(
+              title: 'Notes',
+              icon: Icons.search,
+            ),
+            SizedBox(height: 24),
+            Expanded(child: NotesListView()),
+          ],
+        ),
       ),
     );
   }

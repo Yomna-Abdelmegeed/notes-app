@@ -28,7 +28,7 @@ class CustomNotesCard extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 5),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
