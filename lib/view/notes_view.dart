@@ -12,12 +12,14 @@ class NotesView extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            isScrollControlled: true, //! allows bottom sheet to resize with keyboard
+            //! allows bottom sheet to resize with keyboard
+            isScrollControlled: true,
             builder: (context) {
               return Padding(
+                //! pushes up when keyboard shows
                 padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom), 
-                    //! pushes up when keyboard shows
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
                 child: CustomBottomSheet(),
               );
             },
