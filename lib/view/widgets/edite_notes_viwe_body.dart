@@ -15,9 +15,9 @@ class EditeNotesViweBody extends StatelessWidget {
           icon: Icons.check,
         ),
         SizedBox(height: 30),
-        CustomTextField(hintText: 'Title'),
+        CustomTextFormField(hintText: 'Title'),
         SizedBox(height: 24),
-        CustomTextField(
+        CustomTextFormField(
           hintText: 'Content',
           maxLines: 5,
         ),
