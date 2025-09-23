@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:notes_app/view/widgets/custom_bottom.dart';
-import 'package:notes_app/view/widgets/custom_text_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/view/widgets/notes_form.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet({super.key});
@@ -9,61 +12,20 @@ class CustomBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      child: SingleChildScrollView(
-        child: NotesForm(),
-      ),
-    );
-  }
-}
-
-class NotesForm extends StatefulWidget {
-  const NotesForm({
-    super.key,
-  });
-
-  @override
-  State<NotesForm> createState() => _NotesFormState();
-}
-
-class _NotesFormState extends State<NotesForm> {
-  final GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
-  String? title, subTitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          CustomTextFormField(
-            hintText: 'Title',
-            onSaved: (value) {
-              title = value;
-            },
-          ),
-          SizedBox(height: 24),
-          CustomTextFormField(
-            hintText: 'Content',
-            maxLines: 5,
-            onSaved: (value) {
-              subTitle = value;
-            },
-          ),
-          SizedBox(height: 70),
-          CustomBottom(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-              }
-            },
-          ),
-          SizedBox(height: 24),
-        ],
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteSuccess) {
+            Navigator.pop(context);
+          }
+          if (state is AddNoteFailure) {
+            log(state.errorMessage);
+          }
+        },
+        builder: (context, state) {
+          return SingleChildScrollView(
+            child: NotesForm(),
+          );
+        },
       ),
     );
   }
