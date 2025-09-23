@@ -16,36 +16,38 @@ class NotesForm extends StatefulWidget {
 
 class _NotesFormState extends State<NotesForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   String? title, subTitle;
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          CustomTextFormField(
-            hintText: 'Title',
-            onSaved: (value) {
-              title = value;
-            },
-          ),
-          SizedBox(height: 24),
-          CustomTextFormField(
-            hintText: 'Content',
-            maxLines: 5,
-            onSaved: (value) {
-              subTitle = value;
-            },
-          ),
-          SizedBox(height: 70),
-          BlocBuilder<AddNoteCubit, AddNoteState>(
-            builder: (context, state) {
-              if (state is AddNoteLoading) {}
-              return CustomBottom(
+    return BlocBuilder<AddNoteCubit, AddNoteState>(
+      builder: (context, state) {
+        AutovalidateMode autoMode = AutovalidateMode.disabled;
+        if (state is AddNoteValidation) {
+          autoMode = state.autovalidateMode;
+        }
+        return Form(
+          key: formKey,
+          autovalidateMode: autoMode,
+          child: Column(
+            children: [
+              CustomTextFormField(
+                hintText: 'Title',
+                onSaved: (value) {
+                  title = value;
+                },
+              ),
+              SizedBox(height: 24),
+              CustomTextFormField(
+                hintText: 'Content',
+                maxLines: 5,
+                onSaved: (value) {
+                  subTitle = value;
+                },
+              ),
+              SizedBox(height: 70),
+              CustomBottom(
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
@@ -57,15 +59,15 @@ class _NotesFormState extends State<NotesForm> {
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
                   } else {
-                    autovalidateMode = AutovalidateMode.always;
+                    BlocProvider.of<AddNoteCubit>(context).enableAutoValidate();
                   }
                 },
-              );
-            },
+              ),
+              SizedBox(height: 24),
+            ],
           ),
-          SizedBox(height: 24),
-        ],
-      ),
+        );
+      },
     );
   }
 }

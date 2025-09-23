@@ -13,3 +13,9 @@ final class AddNoteFailure extends AddNoteState {
 
   AddNoteFailure({required this.errorMessage});
 }
+
+class AddNoteValidation extends AddNoteState {
+  final AutovalidateMode autovalidateMode;
+
+  AddNoteValidation(this.autovalidateMode);
+}

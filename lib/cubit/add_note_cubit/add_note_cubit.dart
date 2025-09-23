@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constants.dart';
@@ -17,5 +18,9 @@ class AddNoteCubit extends Cubit<AddNoteState> {
     } catch (e) {
       emit(AddNoteFailure(errorMessage: e.toString()));
     }
+  }
+
+  void enableAutoValidate() {
+    emit(AddNoteValidation(AutovalidateMode.always));
   }
 }
