@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/widgets/custom_notes_card.dart';
 
 class NotesListView extends StatelessWidget {
-  const NotesListView({super.key});
+  const NotesListView(
+      {super.key, required this.itemCount, required this.notes});
+  final int itemCount;
+  final List<NoteModel> notes;
   @override
   Widget build(BuildContext context) {
     const List<Color> colorList = [
@@ -16,14 +20,13 @@ class NotesListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: ListView.builder(
+          itemCount: itemCount,
           padding: const EdgeInsets.symmetric(vertical: 0),
           itemBuilder: (context, index) {
             return CustomNotesCard(
-              title: 'Flutter tips',
-              subtitle: 'build your carrer with tharwat samy',
-              date: 'May 21,2022',
               color: colorList[index % 5],
               onPressed: () {},
+              note: notes[index],
             );
           }),
     );

@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/edit_notes_view.dart';
 
 class CustomNotesCard extends StatelessWidget {
   const CustomNotesCard({
     super.key,
-    required this.title,
-    required this.subtitle,
-    required this.date,
     required this.color,
     required this.onPressed,
+    required this.note,
   });
 
-  final String title;
-  final String subtitle;
-  final String date;
+  final NoteModel note;
   final Color color;
   final VoidCallback onPressed;
   @override
@@ -41,7 +38,7 @@ class CustomNotesCard extends StatelessWidget {
                 title: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    title,
+                    note.title,
                     style: TextStyle(
                       fontSize: 32,
                       color: Colors.black,
@@ -51,7 +48,7 @@ class CustomNotesCard extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    subtitle,
+                    note.subtitle,
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black.withValues(alpha: 0.5),
@@ -70,7 +67,7 @@ class CustomNotesCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 24),
                 child: Text(
-                  date,
+                  note.date,
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black.withValues(alpha: 0.5),
