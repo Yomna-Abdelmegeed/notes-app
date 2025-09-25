@@ -6,13 +6,11 @@ class CustomNotesCard extends StatelessWidget {
   const CustomNotesCard({
     super.key,
     required this.color,
-    required this.onPressed,
     required this.note,
   });
 
   final NoteModel note;
   final Color color;
-  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -56,7 +54,9 @@ class CustomNotesCard extends StatelessWidget {
                   ),
                 ),
                 trailing: IconButton(
-                  onPressed: onPressed,
+                  onPressed: () {
+                    note.delete();
+                  },
                   icon: Icon(
                     Icons.delete,
                     color: Colors.black,

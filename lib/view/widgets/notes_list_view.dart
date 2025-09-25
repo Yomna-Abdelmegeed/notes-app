@@ -25,7 +25,6 @@ class NotesListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return CustomNotesCard(
               color: colorList[index % 5],
-              onPressed: () {},
               note: notes[index],
             );
           }),
