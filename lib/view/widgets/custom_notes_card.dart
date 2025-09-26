@@ -20,7 +20,9 @@ class CustomNotesCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => EditNotesView(),
+            builder: (context) => EditNotesView(
+              note: note,
+            ),
           ),
         );
       },
