@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubit/read_note_cubit/read_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/widgets/custom_bottom.dart';
 import 'package:notes_app/view/widgets/custom_text_field.dart';
@@ -61,6 +62,7 @@ class _NotesFormState extends State<NotesForm> {
                       date: formattedDate,
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                    BlocProvider.of<ReadNoteCubit>(context).readNote();
                   } else {
                     BlocProvider.of<AddNoteCubit>(context).enableAutoValidate();
                   }
