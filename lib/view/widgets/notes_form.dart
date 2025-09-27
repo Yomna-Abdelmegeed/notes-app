@@ -49,7 +49,7 @@ class _NotesFormState extends State<NotesForm> {
                 },
               ),
               SizedBox(height: 24),
-              CircularColor(),
+              CircularColorList(),
               SizedBox(height: 24),
               CustomBottom(
                 isLoading: state is AddNoteLoading ? true : false,
@@ -95,3 +95,23 @@ class CircularColor extends StatelessWidget {
   }
 }
 
+class CircularColorList extends StatelessWidget {
+  const CircularColorList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 48,
+      child: ListView.builder(
+        itemCount: 10,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: CircularColor(),
+          );
+        },
+      ),
+    );
+  }
+}
