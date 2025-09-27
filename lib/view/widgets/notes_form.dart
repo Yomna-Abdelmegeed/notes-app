@@ -48,7 +48,9 @@ class _NotesFormState extends State<NotesForm> {
                   subTitle = value;
                 },
               ),
-              SizedBox(height: 70),
+              SizedBox(height: 24),
+              CircularColor(),
+              SizedBox(height: 24),
               CustomBottom(
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
@@ -76,3 +78,20 @@ class _NotesFormState extends State<NotesForm> {
     );
   }
 }
+
+class CircularColor extends StatelessWidget {
+  const CircularColor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundColor: Colors.white,
+      radius: 24,
+      child: CircleAvatar(
+        backgroundColor: Colors.blue,
+        radius: 22,
+      ),
+    );
+  }
+}
+
