@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/cubit/read_note_cubit/read_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/view/widgets/circular_color_list.dart';
 import 'package:notes_app/view/widgets/custom_bottom.dart';
 import 'package:notes_app/view/widgets/custom_text_field.dart';
 
@@ -49,7 +50,9 @@ class _NotesFormState extends State<NotesForm> {
                 },
               ),
               SizedBox(height: 24),
-              CircularColorList(),
+              CircularColorList(
+                isActive: false,
+              ),
               SizedBox(height: 24),
               CustomBottom(
                 isLoading: state is AddNoteLoading ? true : false,
@@ -75,43 +78,6 @@ class _NotesFormState extends State<NotesForm> {
           ),
         );
       },
-    );
-  }
-}
-
-class CircularColor extends StatelessWidget {
-  const CircularColor({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: Colors.white,
-      radius: 24,
-      child: CircleAvatar(
-        backgroundColor: Colors.blue,
-        radius: 22,
-      ),
-    );
-  }
-}
-
-class CircularColorList extends StatelessWidget {
-  const CircularColorList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 48,
-      child: ListView.builder(
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: CircularColor(),
-          );
-        },
-      ),
     );
   }
 }
