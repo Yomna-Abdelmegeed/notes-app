@@ -50,9 +50,7 @@ class _NotesFormState extends State<NotesForm> {
                 },
               ),
               SizedBox(height: 24),
-              CircularColorList(
-                isActive: false,
-              ),
+              CircularColorList(),
               SizedBox(height: 24),
               CustomBottom(
                 isLoading: state is AddNoteLoading ? true : false,
