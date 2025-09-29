@@ -9,22 +9,14 @@ class NotesListView extends StatelessWidget {
   final List<NoteModel> notes;
   @override
   Widget build(BuildContext context) {
-    const List<Color> colorList = [
-      Color(0xffD5D1E9),
-      Color(0xffD0E4EE),
-      Color(0xffF3F5A9),
-      Color(0xffF5CF9F),
-      Color(0xffF5A7A6),
-    ];
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: ListView.builder(
-          itemCount: itemCount,
+          itemCount: notes.length,
           padding: const EdgeInsets.symmetric(vertical: 0),
           itemBuilder: (context, index) {
             return CustomNotesCard(
-              color: colorList[index % 5],
+              color: Color(notes[index].color),
               note: notes[index],
             );
           }),
