@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constants.dart';
-import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/view/widgets/circular_color.dart';
 
-class CircularColorList extends StatefulWidget {
-  const CircularColorList({super.key});
+class CircularEditColorList extends StatefulWidget {
+  const CircularEditColorList(
+      {super.key, required this.onColorSelected, required this.activeColor});
+  final int activeColor;
+  final ValueChanged<Color> onColorSelected;
 
   @override
-  State<CircularColorList> createState() => _CircularColorListState();
+  State<CircularEditColorList> createState() => _CircularEditColorListState();
 }
 
-class _CircularColorListState extends State<CircularColorList> {
+class _CircularEditColorListState extends State<CircularEditColorList> {
   int activeIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    final index = kColorList.indexWhere(
+      (color) => color.value == widget.activeColor,
+    );
+
+    if (index != -1) {
+      activeIndex = index;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,9 +40,7 @@ class _CircularColorListState extends State<CircularColorList> {
               setState(() {
                 activeIndex = index;
               });
-
-              BlocProvider.of<AddNoteCubit>(context).selectedColor =
-                  kColorList[activeIndex];
+              widget.onColorSelected(kColorList[activeIndex]);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),

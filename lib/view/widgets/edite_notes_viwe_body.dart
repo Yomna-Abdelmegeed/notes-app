@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubit/read_note_cubit/read_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/view/widgets/circular_color_list.dart';
+import 'package:notes_app/view/widgets/circular_edit_color_list.dart';
 import 'package:notes_app/view/widgets/custom_app_bar.dart';
 import 'package:notes_app/view/widgets/custom_text_field.dart';
 
@@ -59,11 +59,10 @@ class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
         ),
         SizedBox(height: 20),
         CircularEditColorList(
-         
-          activeColor: widget.note.color, 
+          activeColor: widget.note.color,
           onColorSelected: (Color value) {
             color = value;
-          }, 
+          },
         )
       ],
     );
