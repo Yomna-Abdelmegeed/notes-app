@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubit/read_note_cubit/read_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/view/widgets/circular_color_list.dart';
 import 'package:notes_app/view/widgets/custom_app_bar.dart';
 import 'package:notes_app/view/widgets/custom_text_field.dart';
 
@@ -16,6 +17,14 @@ class EditeNotesViweBody extends StatefulWidget {
 
 class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
   String? title, subtitle;
+  late Color color;
+
+  @override
+  void initState() {
+    super.initState();
+    color = Color(widget.note.color);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,6 +34,7 @@ class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
           onPressed: () {
             widget.note.title = title ?? widget.note.title;
             widget.note.subtitle = subtitle ?? widget.note.subtitle;
+            widget.note.color = color.value;
             widget.note.save();
             BlocProvider.of<ReadNoteCubit>(context).readNote();
             Navigator.pop(context);
@@ -47,6 +57,14 @@ class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
             subtitle = value;
           },
         ),
+        SizedBox(height: 20),
+        CircularEditColorList(
+         
+          activeColor: widget.note.color, 
+          onColorSelected: (Color value) {
+            color = value;
+          }, 
+        )
       ],
     );
   }
