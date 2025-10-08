@@ -4,8 +4,10 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/widgets/circular_color.dart';
 
 class CircularEditColorList extends StatefulWidget {
-  const CircularEditColorList({super.key, required this.note});
+  const CircularEditColorList(
+      {super.key, required this.note, required this.onColorChanged});
   final NoteModel note;
+  final ValueChanged<Color> onColorChanged;
 
   @override
   State<CircularEditColorList> createState() => _CircularEditColorListState();
@@ -36,6 +38,7 @@ class _CircularEditColorListState extends State<CircularEditColorList> {
                 activeIndex = index;
               });
               widget.note.color = kColorList[activeIndex].value;
+              widget.onColorChanged(kColorList[activeIndex]);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),

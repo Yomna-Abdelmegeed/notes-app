@@ -7,9 +7,11 @@ import 'package:notes_app/view/widgets/custom_app_bar.dart';
 import 'package:notes_app/view/widgets/custom_text_field.dart';
 
 class EditeNotesViweBody extends StatefulWidget {
-  const EditeNotesViweBody({super.key, required this.note});
+  const EditeNotesViweBody(
+      {super.key, required this.note, required this.onColorChanged});
 
   final NoteModel note;
+  final ValueChanged<Color> onColorChanged;
 
   @override
   State<EditeNotesViweBody> createState() => _EditeNotesViweBodyState();
@@ -17,13 +19,6 @@ class EditeNotesViweBody extends StatefulWidget {
 
 class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
   String? title, subtitle;
-  late Color color;
-
-  @override
-  void initState() {
-    super.initState();
-    color = Color(widget.note.color);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +29,6 @@ class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
           onPressed: () {
             widget.note.title = title ?? widget.note.title;
             widget.note.subtitle = subtitle ?? widget.note.subtitle;
-
             widget.note.save();
             BlocProvider.of<ReadNoteCubit>(context).readNote();
             Navigator.pop(context);
@@ -59,8 +53,10 @@ class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
         ),
         SizedBox(height: 20),
         CircularEditColorList(
-          note: widget.note,
-        )
+            note: widget.note,
+            onColorChanged: (newColor) {
+              widget.onColorChanged(newColor);
+            })
       ],
     );
   }

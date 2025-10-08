@@ -24,7 +24,7 @@ class NotesApp extends StatelessWidget {
       create: (context) => ReadNoteCubit()..readNote(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark(),
+        theme: ThemeData.light(),
         home: NotesView(),
       ),
     );
