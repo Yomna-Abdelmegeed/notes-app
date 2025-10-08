@@ -34,7 +34,7 @@ class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
           onPressed: () {
             widget.note.title = title ?? widget.note.title;
             widget.note.subtitle = subtitle ?? widget.note.subtitle;
-            widget.note.color = color.value;
+
             widget.note.save();
             BlocProvider.of<ReadNoteCubit>(context).readNote();
             Navigator.pop(context);
@@ -59,10 +59,7 @@ class _EditeNotesViweBodyState extends State<EditeNotesViweBody> {
         ),
         SizedBox(height: 20),
         CircularEditColorList(
-          activeColor: widget.note.color,
-          onColorSelected: (Color value) {
-            color = value;
-          },
+          note: widget.note,
         )
       ],
     );
