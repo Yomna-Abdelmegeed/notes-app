@@ -69,16 +69,6 @@ flutter run
 - ✨ Features **smooth animations** and polished UI transitions.  
 - 🧩 Designed with **scalability and readability** in mind.
 
-
----
-## 🎯 Future Improvements
-
-- 🔍 **Search and Filter Notes**  
-  Add functionality to quickly find notes by title, content, or color.
-
-- 🔔 **Notifications for Reminders**  
-  Let users set reminders for important notes with local notifications.
-
 ---
 ## 📚 Learnings
 
@@ -88,6 +78,16 @@ This project is a great resource to learn about:
 - 🧩 **Bloc & Cubit** for effective state management in Flutter.  
 - 🎨 **Custom UI components** and how to handle dynamic color updates.  
 - 💾 **Data persistence**, validation, and model-driven architecture.  
+
+---
+
+## 🎯 Future Improvements
+
+- 🔍 **Search and Filter Notes**  
+  Add functionality to quickly find notes by title, content, or color.
+
+- 🔔 **Notifications for Reminders**  
+  Let users set reminders for important notes with local notifications.
 
 ---
 
