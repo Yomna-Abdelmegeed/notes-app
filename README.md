@@ -1,7 +1,8 @@
 # 📝 Notes App
 
-![Notes App Preview](./848db63f-275e-427b-b5a8-9c17fba3bbd5.png)
-
+<p align="center">
+  <img src="./assets/screenshots/notes_list.png" alt="Notes List" width="300"/>
+</p>
 A beautifully designed Flutter application that allows users to **create, edit, and organize their notes** effortlessly.  
 The app features smooth animations, modern UI components, dynamic color selection, and persistent storage — making note-taking fast, elegant, and efficient.
 
@@ -30,12 +31,18 @@ The app features smooth animations, modern UI components, dynamic color selectio
 
 ---
 
+---
+
 ## 📱 Screenshots
 
-| Add Note | Notes List | Edit Note |
-|-----------|-------------|-----------|
-| ![Add Note](./screenshots/add_note.png) | ![Notes List](./screenshots/notes_list.png) | ![Edit Note](./screenshots/edit_note.png) |
+Below are some preview screens of the **Notes App** interface 👇  
+
+| 📝 Add Note | 📋 Notes List | ✏️ Edit Note |
+|--------------|---------------|---------------|
+| ![Add Note](./assets/screenshots/add_note.png) | ![Notes List](./assets/screenshots/notes_list.png) | ![Edit Note](./assets/screenshots/edit_note.png) |
+
 ---
+
 ## ⚙️ Installation
 
 Follow these steps to set up and run the project locally:
@@ -86,11 +93,9 @@ This project is a great resource to learn about:
 
 ## 🧑‍💻 Author
 
-**Your Name**  
-📧 your.email@example.com  
-🌐 [Your Portfolio or LinkedIn](https://www.linkedin.com/)
-
- 
+**Yomna Abdelmegeed**  
+📧 yomna.developer@gmail.com  
+🌐 [LinkedIn Profile](https://www.linkedin.com/in/yomna-abdelmegeed-91759026a/)
 
 
 
