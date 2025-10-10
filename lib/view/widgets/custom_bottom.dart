@@ -13,7 +13,7 @@ class CustomBottom extends StatelessWidget {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-          color: Color(0xffD0E4EE),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
@@ -30,7 +30,7 @@ class CustomBottom extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.grey,
                     ),
                   )),
       ),

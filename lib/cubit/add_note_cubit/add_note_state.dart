@@ -14,6 +14,11 @@ final class AddNoteFailure extends AddNoteState {
   AddNoteFailure({required this.errorMessage});
 }
 
+class AddNoteColorChanged extends AddNoteState {
+  final Color color;
+  AddNoteColorChanged(this.color);
+}
+
 class AddNoteValidation extends AddNoteState {
   final AutovalidateMode autovalidateMode;
 

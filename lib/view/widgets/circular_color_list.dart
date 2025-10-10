@@ -27,8 +27,8 @@ class _CircularColorListState extends State<CircularColorList> {
                 activeIndex = index;
               });
 
-              BlocProvider.of<AddNoteCubit>(context).selectedColor =
-                  kColorList[activeIndex];
+              BlocProvider.of<AddNoteCubit>(context)
+                  .changeColor(kColorList[activeIndex]);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),

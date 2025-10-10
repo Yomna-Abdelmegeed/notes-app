@@ -24,4 +24,9 @@ class AddNoteCubit extends Cubit<AddNoteState> {
   void enableAutoValidate() {
     emit(AddNoteValidation(AutovalidateMode.always));
   }
+
+  void changeColor(Color color) {
+    selectedColor = color;
+    emit(AddNoteColorChanged(color));
+  }
 }

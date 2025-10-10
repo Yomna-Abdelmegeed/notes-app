@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/view/widgets/custom_bottom_sheet.dart';
 import 'package:notes_app/view/widgets/notes_view_body.dart';
 
@@ -15,12 +17,28 @@ class NotesView extends StatelessWidget {
             //! allows bottom sheet to resize with keyboard
             isScrollControlled: true,
             builder: (context) {
-              return Padding(
-                //! pushes up when keyboard shows
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom,
+              return BlocProvider(
+                create: (context) => AddNoteCubit(),
+                child: BlocBuilder<AddNoteCubit, AddNoteState>(
+                  builder: (context, state) {
+                    final color = context.read<AddNoteCubit>().selectedColor;
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(24),
+                        ),
+                      ),
+                      child: Padding(
+                        //! pushes up when keyboard shows
+                        padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom,
+                        ),
+                        child: CustomBottomSheet(),
+                      ),
+                    );
+                  },
                 ),
-                child: CustomBottomSheet(),
               );
             },
           );
