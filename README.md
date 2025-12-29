@@ -3,7 +3,7 @@
 <p align="center">
   <img src="./assets/screenshots/notes_list.png" alt="Notes List" width="300"/>
 </p>
-A beautifully designed Flutter application that allows users to **create, edit, and organize their notes** effortlessly.  
+A beautifully designed Flutter application that allows users to <B>create, edit, and organize their notes</B> effortlessly.  
 The app features smooth animations, modern UI components, dynamic color selection, and persistent storage — making note-taking fast, elegant, and efficient.
 
 ---
